@@ -4,7 +4,6 @@ import ScreenAcounts from '../components/acounts/ScreenAcounts';
 import Footer from '../components/shared/Footer'
 import Header from '../components/shared/Header'
 
-
 function AcountsPage() {
     const headerText = 'Gerenciar Contas'
     const leftButton = 'Cadastrar conta'
@@ -23,6 +22,10 @@ function AcountsPage() {
         navigate('/acounts')
     }
 
+    function mergeAcount(){        
+        navigate('/merge')
+    }
+
     return (
       
         <ScreenContainer>
@@ -37,6 +40,7 @@ function AcountsPage() {
             rightIcon={rightIcon}
             leftNavigate={addAcount}
             midNavigate={removeAcount}
+            rightNavigate={mergeAcount}
             />
         </ScreenContainer>
       

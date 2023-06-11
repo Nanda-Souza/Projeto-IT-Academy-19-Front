@@ -1,44 +1,42 @@
 import styled from "styled-components"
-import { useNavigate } from "react-router-dom";
-
-
 
 export default function ScreenAcounts(){
-    const navigate = useNavigate()
-
- 
+  
     return (
         <RemoveContainer>
-             <div className="container">
+            <div className="container">
                 
-             <InputContainer>
+             <Remove>
              
-<InputList>
+             <RemoveList>
 
-    <p className="remove-text">Remover Conta</p>
+             <p className="remove-text">Remover Conta</p>
       
-           <div className="bank-remove">
+             <div className="bank-remove">
                 <p className="balance">Nubank</p>
                 <p className="total"><span><img src="assets/trash.png" alt=""/></span></p>
-            </div>
-            <div className="remove-bank">
+             </div>
+
+             <div className="remove-bank">
                 <p className="balance">Bradesco</p>
                 <p className="total"><span><img src="assets/trash.png" alt=""/></span></p>
-            </div>
-            <div className="bank-remove">
+             </div>
+
+             <div className="bank-remove">
                 <p className="balance">Itáu</p>
                 <p className="total"><span><img src="assets/trash.png" alt=""/></span></p>
-            </div>
-            <div className="remove-bank">
+             </div>
+
+             <div className="remove-bank">
                 <p className="balance">Caixa</p>
                 <p className="total"><span><img src="assets/trash.png" alt=""/></span></p>
+             </div>
+
+             </RemoveList>
+
+             </Remove>
+
             </div>
-
-
-</InputList>
-
-</InputContainer>
-</div>
 
         </RemoveContainer>
     )
@@ -99,7 +97,7 @@ const RemoveContainer = styled.div`
       }
 `
 
-const InputContainer = styled.ul`
+const Remove = styled.ul`
     input {
         width: 303px;
         height: 45px;
@@ -124,7 +122,7 @@ const InputContainer = styled.ul`
         }
         `
 
-const InputList = styled.li`
+const RemoveList = styled.li`
 padding: 15px;
 display: flex;
 flex-direction: column;

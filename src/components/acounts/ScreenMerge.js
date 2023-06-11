@@ -1,53 +1,54 @@
 import styled from "styled-components"
+import { Dropdown } from 'rsuite';
 
-export default function ScreenAcounts(){
+export default function ScreenMerge(){
     
     return (
-        <AcountsContainer>
+        <Join>
              
          <div className="container">
                 
-            <InputContainer>
+            <MergeContainer>
              
-                <InputList>
+                <MergeList>
 
-                 <p className="register-text">Cadastre sua conta</p>
+                 <p className="merge-text">Mesclar Contas</p>
 
-                 <input                
-                  type="bank"
-                  placeholder="Banco"
-                  required             
-                 />
+                 
+                  <select class="ui-dropdown">
+                   <option value="">Selecione uma conta</option> 
+                   <option value="4">Nubank 1234 1500686-2</option>
+                   <option value="3">Bradesco 0144 1063530-0</option>
+                   <option value="2">Itáu 2569 1267540-7</option>
+                   <option value="1">Caixa 3785 4455289-0</option>
+                  </select>
+                
+                  <select class="ui-dropdown">
+                   <option value="">Selecione outra conta</option> 
+                   <option value="4">Nubank 1234 1500686-2</option>
+                   <option value="3">Bradesco 0144 1063530-0</option>
+                   <option value="2">Itáu 2569 1267540-7</option>
+                   <option value="1">Caixa 3785 4455289-0</option>
+                  </select>
+                      
 
-                 <input                
-                  type="agency" 
-                  placeholder="Agência" 
-                  required
-                 />
-
-                 <input                
-                  type="account" 
-                  placeholder="Nº da conta" 
-                  required
-                 />
-
-                 <Register>
-                  <p id="button" className="button-log">Cadastrar Conta</p>
-                 </Register>
+                 <Merge>
+                  <p id="button" className="button-log">Mesclar Contas</p>
+                 </Merge>
 
 
-                </InputList>
+                </MergeList>
 
-            </InputContainer>
+            </MergeContainer>
 
          </div>
 
-        </AcountsContainer>
+        </Join>
     )
 }
 
 
-const AcountsContainer = styled.div`
+const Join = styled.div`
     display: flex;
     justify-content: center;
     aligh-itens: center;
@@ -73,7 +74,7 @@ const AcountsContainer = styled.div`
       }
 `
 
-const InputContainer = styled.ul`
+const MergeContainer = styled.ul`
     input {
         width: 303px;
         height: 45px;
@@ -98,12 +99,12 @@ const InputContainer = styled.ul`
         }
         `
 
-const InputList = styled.li`
+const MergeList = styled.li`
 padding: 15px;
 display: flex;
 flex-direction: column;
 align-items: center;
-.register-text{
+.merge-text{
    font-family: 'Quicksand', sans-serif;
    font-weight: 600;
    font-size: 22px;
@@ -111,10 +112,21 @@ align-items: center;
    margin-bottom: 20px;
    color: #05AFFC;
 }
-
+.ui-dropdown{
+    width:300px;
+    height:50px;
+    margin-bottom:6px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 10px;
+    border-color: #05AFFC;
+    color: #05AFFC;
+    background-color: #FFFFFF;
+}
 `
 
-const Register = styled.button` 
+const Merge = styled.li` 
         width: 230px;
         height: 45px;
         background-color: #05AFFC;
@@ -129,8 +141,6 @@ const Register = styled.button`
         color: #FFFFFF;
         display: flex;
         justify-content: center;
-        align-items: center;
-             
+        align-items: center; 
         `
-     
-    
+        

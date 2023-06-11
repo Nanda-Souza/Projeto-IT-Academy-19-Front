@@ -1,21 +1,14 @@
 import styled from "styled-components"
-import { useNavigate } from "react-router-dom";
 
 export default function FotterAcounts(props){
-    const { leftButton, midButton, rightButton, leftIcon, midIcon, rightIcon, leftNavigate, midNavigate } = props
-    const navigate = useNavigate()
-
-    function newExpense(){        
-        navigate("/nova-saida")
-    }
+    const { leftButton, midButton, rightButton, leftIcon, midIcon, rightIcon, leftNavigate, midNavigate, rightNavigate } = props
     
-
     return (
         
         <FooterAcount>
 
             <div className="new-acount">
-                <button data-test="new-acount" onClick={leftNavigate}>
+                <button onClick={leftNavigate}>
                     <img src={leftIcon} alt=""/>
                     <p>{leftButton}</p>
                 </button>
@@ -23,14 +16,14 @@ export default function FotterAcounts(props){
        
 
             <div className="remove-acount">
-                <button data-test="remove-acount" onClick={midNavigate}>
+                <button onClick={midNavigate}>
                     <img src={midIcon} alt=""/>
                     <p>{midButton}</p>
                 </button>
             </div>
 
             <div className="merge">
-                <button data-test="merge" onClick={newExpense}>
+                <button onClick={rightNavigate}>
                     <img src={rightIcon} alt=""/>
                     <p>{rightButton}</p>
                 </button>

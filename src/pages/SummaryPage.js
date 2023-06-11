@@ -4,7 +4,6 @@ import Header from '../components/shared/Header'
 import Footer from '../components/shared/Footer'
 import ScreenSummary from '../components/panel/ScreenSummary';
 
-
 function SummaryPage() {
     const headerText = 'Painel Geral'
     const leftButton = 'Resumo das Contas'

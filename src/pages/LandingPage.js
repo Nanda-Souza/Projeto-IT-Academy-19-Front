@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 import LandingContainer from '../components/landing/ScreenLanding';
 
-
 function LandingPage() {
     
-    
-
     return (
       
         <ScreenContainer>
-            <LandingContainer />
-            
+            <LandingContainer />   
         </ScreenContainer>
       
     );

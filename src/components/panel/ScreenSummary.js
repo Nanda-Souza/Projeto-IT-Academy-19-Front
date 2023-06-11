@@ -1,18 +1,13 @@
 import styled from "styled-components"
-import { useNavigate } from "react-router-dom";
-
-
 
 export default function ScreenSummary(){
-    const navigate = useNavigate()
-
- 
+   
     return (
         <SummaryContainer>
              
-        <div className="container">
+            <div className="container">
 
-            <div className="list-bank">
+             <div className="list-bank">
                 <ul>
                     <li><span className="blue">BANCO</span></li>
                     <li><span className="bank">Nubank</span></li>
@@ -21,7 +16,7 @@ export default function ScreenSummary(){
                     <li><span className="bank">Caixa</span></li>
                 </ul>
 
-                <div className="vertical-line"></div>
+                 <div className="vertical-line"></div>
 
                 <ul className="agence">
                     <li><span className="blue">AGÊNCIA</span></li>
@@ -31,7 +26,7 @@ export default function ScreenSummary(){
                     <li><span className="agence">3785</span></li>
                 </ul>
 
-                <div className="vertical-line"></div>
+                 <div className="vertical-line"></div>
 
                 <ul className="numeber-acount">
                     <li><span className="blue">Nº DA CONTA</span></li>
@@ -41,7 +36,7 @@ export default function ScreenSummary(){
                     <li><span className="number">4455289-0</span></li>
                 </ul>
 
-                <div className="vertical-line"></div>
+                 <div className="vertical-line"></div>
 
                 <ul className="value">
                     <li><span className="blue">SALDO</span></li>
@@ -51,20 +46,19 @@ export default function ScreenSummary(){
                     <li><span className="gain">3000,00</span></li>
                 </ul>
 
-            </div>
+             </div>
 
           
-            <div className="total-balance">
+             <div className="total-balance">
                 <p className="balance">SALDO TOTAL</p>
                 <p className="total"><span>2849,96</span></p>
-            </div>
+             </div>
 
-        </div>
+            </div>
 
         </SummaryContainer>
     )
 }
-
 
 const SummaryContainer = styled.div`
     display: flex;

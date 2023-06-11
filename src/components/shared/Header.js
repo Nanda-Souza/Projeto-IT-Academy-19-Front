@@ -1,14 +1,11 @@
 import styled from "styled-components"
-import { useNavigate } from "react-router-dom";
 
 export default function HeaderAcounts(props){
     const { headerText } = props
-    
     return (
         <HeaderGeneral>
             <p className= "textHeader">{headerText}</p>
-            <button data-test="logout" onClick><img src="assets/exit.png" alt=""/></button>
-
+            <button onClick><img src="assets/exit.png" alt=""/></button>
         </HeaderGeneral>
     )
 }

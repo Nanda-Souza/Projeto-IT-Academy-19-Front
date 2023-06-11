@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
-import ScreenRemove from '../components/acounts/ScreenRemove'
+import ScreenMerge from '../components/acounts/ScreenMerge';
 import Footer from '../components/shared/Footer'
 import Header from '../components/shared/Header'
 
-function RemovePage() {
+function AcountsPage() {
     const headerText = 'Gerenciar Contas'
     const leftButton = 'Cadastrar conta'
     const midButton = 'Remover Conta'
@@ -13,24 +13,20 @@ function RemovePage() {
     const midIcon = 'assets/remove.png'
     const rightIcon = 'assets/merge.png'
     const navigate = useNavigate()
-
+    
     function removeAcount(){        
         navigate('/remove')
     }
 
     function addAcount(){        
         navigate('/acounts')
-    }    
-
-    function mergeAcount(){        
-        navigate('/merge')
     }
 
     return (
       
         <ScreenContainer>
             <Header headerText={headerText} />
-            <ScreenRemove />
+            <ScreenMerge />
             <Footer 
             leftButton={leftButton}
             midButton={midButton}
@@ -40,14 +36,13 @@ function RemovePage() {
             rightIcon={rightIcon}
             leftNavigate={addAcount}
             midNavigate={removeAcount}
-            rightNavigate={mergeAcount}            
             />
         </ScreenContainer>
       
     );
   }
   
-  export default RemovePage;
+  export default AcountsPage;
   
   const ScreenContainer = styled.div`
   background-color: #11DCE6;

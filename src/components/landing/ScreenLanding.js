@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-
 export default function LandingContainer(){
   const navigate = useNavigate();
 
@@ -64,7 +63,7 @@ const Buttons = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-button {
+button{
         width: 326px;
         height: 55px;
         background-color: #0595F2;
@@ -79,4 +78,5 @@ button {
         display: flex;
         justify-content: center;
         align-items: center;
+        }
         `
