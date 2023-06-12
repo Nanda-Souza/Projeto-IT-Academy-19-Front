@@ -1,26 +1,30 @@
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
-import ScreenMerge from '../components/accounts/ScreenMerge';
 import Footer from '../components/shared/Footer'
 import Header from '../components/shared/Header'
+import ScreenSavings from '../components/money/ScreenSavings';
 
-function MergePage() {
-    const headerText = 'Gerenciar Contas'
-    const leftButton = 'Cadastrar conta'
-    const midButton = 'Remover Conta'
-    const rightButton = 'Mesclar Contas'
-    const leftIcon = 'assets/add.png'
+function SavingsPage() {
+    const headerText = 'Cofrinho Digital'
+    const leftButton = 'Guardar Dinheiro'
+    const midButton = 'Retirar Dinheiro Guardado'
+    const rightButton = 'Economias'
+    const leftIcon = 'assets/wallet.png'
     const midIcon = 'assets/remove.png'
-    const rightIcon = 'assets/merge.png'
+    const rightIcon = 'assets/calculator.png'
     const exitIcon = 'assets/exit.png'
     const navigate = useNavigate()
     
-    function removeAccount(){        
-        navigate('/remove')
+    function saveMoney(){        
+        navigate('/save')
     }
 
-    function addAccount(){        
-        navigate('/account')
+    function withdrawalMoney(){        
+        navigate('/withdrawal')
+    }
+
+    function savingsMoney(){        
+        navigate('/savings')
     }
 
     function accountExit(){        
@@ -30,11 +34,11 @@ function MergePage() {
     return (
       
         <ScreenContainer>
-            <Header headerText={headerText} 
+            <Header headerText={headerText}
             exitIcon={exitIcon}
             exitNavigate={accountExit}
             />
-            <ScreenMerge />
+            <ScreenSavings />
             <Footer 
             leftButton={leftButton}
             midButton={midButton}
@@ -42,15 +46,16 @@ function MergePage() {
             leftIcon={leftIcon}
             midIcon={midIcon}
             rightIcon={rightIcon}
-            leftNavigate={addAccount}
-            midNavigate={removeAccount}
+            leftNavigate={saveMoney}
+            midNavigate={withdrawalMoney}
+            rightNavigate={savingsMoney}
             />
         </ScreenContainer>
       
     );
   }
   
-  export default MergePage;
+  export default SavingsPage;
   
   const ScreenContainer = styled.div`
   background-color: #11DCE6;

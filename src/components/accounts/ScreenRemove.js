@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default function ScreenAcounts(){
+export default function ScreenAccounts(){
   
     return (
         <RemoveContainer>
@@ -66,6 +66,7 @@ const RemoveContainer = styled.div`
         font-family: 'Quicksand', sans-serif;
         font-style: normal;
         font-weight: 400;
+    }
         .bank-remove{
             width: 83vw;; 
             height: 45px;
@@ -94,7 +95,11 @@ const RemoveContainer = styled.div`
             margin-top:10px;
             color:#ffffff;
         }
-      }
+        @media (max-width: 700px) {
+            .container {
+              height:70vh;
+              margin-top: 20%;
+            }
 `
 
 const Remove = styled.ul`

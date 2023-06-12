@@ -1,31 +1,38 @@
 import styled from "styled-components"
 
-export default function FotterAccounts(props){
-    const { leftButton, midButton, rightButton, leftIcon, midIcon, rightIcon, leftNavigate, midNavigate, rightNavigate } = props
+export default function FooterTransaction(props){
+    const { buttonOne, buttonTwo, buttonThree, buttonFour, oneIcon, twoIcon, threeIcon, fourIcon, oneNavigate, twoNavigate, threeNavigate, fourNavigate } = props
     
     return (
         
         <FooterGeneral>
 
-            <div className="left-navigate">
-                <button onClick={leftNavigate}>
-                    <img src={leftIcon} alt=""/>
-                    <p>{leftButton}</p>
+            <div className="one-navigate">
+                <button onClick={oneNavigate}>
+                    <img src={oneIcon} alt=""/>
+                    <p>{buttonOne}</p>
                 </button>
             </div>
        
 
-            <div className="mid-navigate">
-                <button onClick={midNavigate}>
-                    <img src={midIcon} alt=""/>
-                    <p>{midButton}</p>
+            <div className="two-navigate">
+                <button onClick={twoNavigate}>
+                    <img src={twoIcon} alt=""/>
+                    <p>{buttonTwo}</p>
                 </button>
             </div>
 
-            <div className="right-navigate">
-                <button onClick={rightNavigate}>
-                    <img src={rightIcon} alt=""/>
-                    <p>{rightButton}</p>
+            <div className="three-navigate">
+                <button onClick={threeNavigate}>
+                    <img src={threeIcon} alt=""/>
+                    <p>{buttonThree}</p>
+                </button>
+            </div>
+
+            <div className="four-navigate">
+                <button onClick={fourNavigate}>
+                    <img src={fourIcon} alt=""/>
+                    <p>{buttonFour}</p>
                 </button>
             </div>
        
@@ -47,22 +54,23 @@ const FooterGeneral = styled.footer`
     justify-content: center;
     aligh-itens: center;
     div{
-        width: 532px;
+        width: 397px;
         height: 114px;
         background-color: #0595F2;
         border-radius: 5px;
     }
-    .left-navigate{
-        margin-left:25px;
+    .one-navigate{
         margin-right:5px;
 
     }
-    .mid-navigate{
+    .two-navigate{
         margin-right:5px;
     }
-    .right-navigate{
-        margin-right:25px;
-
+    .three-navigate{
+        margin-right:5px;
+    }
+    .button-four{
+        margin-right:5px;
     }
     button{
         display:flex;

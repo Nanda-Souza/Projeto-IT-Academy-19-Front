@@ -10,13 +10,17 @@ export default function LandingContainer(){
     navigate("/summary");
 }
 
-  function acountsPage(){
-    navigate("/acounts");
+  function accountsPage(){
+    navigate("/account");
 }
 
-  function exit(){
-    navigate("/");
-  }
+function transationsPage(){
+  navigate("/extract");
+}
+
+function savePage(){
+  navigate("/save");
+}
     
     return (
     <>
@@ -30,15 +34,15 @@ export default function LandingContainer(){
             Painel Geral
          </button>
 
-         <button className="acounts" onClick={acountsPage}>
+         <button className="accounts" onClick={accountsPage}>
             Gerenciar Contas
          </button>
 
-         <button className="transactions">
+         <button className="transactions" onClick={transationsPage}>
             Gerenciar Transações
          </button>
 
-         <button className="reserve" onClick={exit}>
+         <button className="reserve" onClick={savePage}>
             Cofrinho Digital
          </button>
         

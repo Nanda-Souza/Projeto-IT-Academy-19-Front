@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
 import Header from '../components/shared/Header'
 import Footer from '../components/shared/Footer'
-import ScreenSummary from '../components/panel/ScreenSummary';
+import ScreenMonthlySum from '../components/panel/ScreenMonthlySum';
 
-function SummaryPage() {
+function MonthlySumPage() {
     const headerText = 'Painel Geral'
     const leftButton = 'Resumo das Contas'
     const midButton = 'Receitas e Despesas do Mês'
@@ -34,11 +34,12 @@ function SummaryPage() {
     return (
       
         <ScreenContainer>
-            <Header headerText={headerText} 
-            exitIcon={exitIcon}
-            exitNavigate={accountExit}
-            />
-            <ScreenSummary />
+            <Header 
+                headerText={headerText} 
+                exitIcon={exitIcon}
+                exitNavigate={accountExit}
+                />
+            <ScreenMonthlySum />
             <Footer 
                 leftButton={leftButton}
                 midButton={midButton}
@@ -55,7 +56,7 @@ function SummaryPage() {
     );
   }
   
-  export default SummaryPage;
+  export default MonthlySumPage;
   
   const ScreenContainer = styled.div`
   background-color: #11DCE6;

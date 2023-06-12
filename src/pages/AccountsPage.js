@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
-import ScreenAcounts from '../components/acounts/ScreenAcounts';
+import ScreenAccounts from '../components/accounts/ScreenAccounts';
 import Footer from '../components/shared/Footer'
 import Header from '../components/shared/Header'
 
-function AcountsPage() {
+function AccountsPage() {
     const headerText = 'Gerenciar Contas'
     const leftButton = 'Cadastrar conta'
     const midButton = 'Remover Conta'
@@ -12,25 +12,33 @@ function AcountsPage() {
     const leftIcon = 'assets/add.png'
     const midIcon = 'assets/remove.png'
     const rightIcon = 'assets/merge.png'
+    const exitIcon = 'assets/exit.png'
     const navigate = useNavigate()
     
-    function removeAcount(){        
+    function removeAccount(){        
         navigate('/remove')
     }
 
-    function addAcount(){        
-        navigate('/acounts')
+    function addAccount(){        
+        navigate('/account')
     }
 
-    function mergeAcount(){        
+    function mergeAccount(){        
         navigate('/merge')
+    }
+
+    function accountExit(){        
+        navigate('/')
     }
 
     return (
       
         <ScreenContainer>
-            <Header headerText={headerText} />
-            <ScreenAcounts />
+            <Header headerText={headerText}
+            exitIcon={exitIcon}
+            exitNavigate={accountExit}
+            />
+            <ScreenAccounts />
             <Footer 
             leftButton={leftButton}
             midButton={midButton}
@@ -38,16 +46,16 @@ function AcountsPage() {
             leftIcon={leftIcon}
             midIcon={midIcon}
             rightIcon={rightIcon}
-            leftNavigate={addAcount}
-            midNavigate={removeAcount}
-            rightNavigate={mergeAcount}
+            leftNavigate={addAccount}
+            midNavigate={removeAccount}
+            rightNavigate={mergeAccount}
             />
         </ScreenContainer>
       
     );
   }
   
-  export default AcountsPage;
+  export default AccountsPage;
   
   const ScreenContainer = styled.div`
   background-color: #11DCE6;

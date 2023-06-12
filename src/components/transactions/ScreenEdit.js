@@ -1,54 +1,65 @@
 import styled from "styled-components"
-import { Dropdown } from 'rsuite';
 
-export default function ScreenMerge(){
-    
+export default function ScreenEdit(){
+   
     return (
-        <Join>
+        <EditContainer>
              
          <div className="container">
                 
-            <MergeContainer>
+            <InputContainer>
              
-                <MergeList>
+                <InputList>
 
-                 <p className="merge-text">Mesclar Contas</p>
+                 <p className="register-text">Editar Última Transação</p>
 
-                 
-                  <select class="ui-dropdown">
-                   <option value="">Selecione uma conta</option> 
-                   <option value="4">Nubank 1234 1500686-2</option>
-                   <option value="3">Bradesco 0144 1063530-0</option>
-                   <option value="2">Itáu 2569 1267540-7</option>
-                   <option value="1">Caixa 3785 4455289-0</option>
-                  </select>
-                
-                  <select class="ui-dropdown">
-                   <option value="">Selecione outra conta</option> 
-                   <option value="4">Nubank 1234 1500686-2</option>
-                   <option value="3">Bradesco 0144 1063530-0</option>
-                   <option value="2">Itáu 2569 1267540-7</option>
-                   <option value="1">Caixa 3785 4455289-0</option>
-                  </select>
-                      
+                 <input                
+                  type="data"
+                  placeholder="27/12/2023"
+                  required             
+                 />
 
-                 <Merge>
-                  <p id="button" className="button-log">Mesclar Contas</p>
-                 </Merge>
+                 <input                
+                  type="catg" 
+                  placeholder="Alimentação" 
+                  required
+                 />
+
+                 <input                
+                  type="desc" 
+                  placeholder="Alimentação" 
+                  required
+                 />
+
+                 <input                
+                  type="value" 
+                  placeholder="542.44" 
+                  required
+                 /> 
+
+                <EditList>
+                  <Edit>
+                   <p id="button" className="button-rec">Nova Receita</p>
+                  </Edit>
+
+                  <Edit>
+                   <p id="button" className="button-desp">Nova Despesa</p>
+                  </Edit>
+                 </EditList>
 
 
-                </MergeList>
+                </InputList>
 
-            </MergeContainer>
+            </InputContainer>
 
          </div>
 
-        </Join>
+        </EditContainer>
     )
 }
 
 
-const Join = styled.div`
+const EditContainer = styled.div`
     display: flex;
     justify-content: center;
     aligh-itens: center;
@@ -72,9 +83,14 @@ const Join = styled.div`
         font-style: normal;
         font-weight: 400;
       }
+      @media (max-width: 700px) {
+        .container {
+          height:70vh;
+          margin-top: 20%;
+        }
 `
 
-const MergeContainer = styled.ul`
+const InputContainer = styled.ul`
     input {
         width: 303px;
         height: 45px;
@@ -99,12 +115,12 @@ const MergeContainer = styled.ul`
         }
         `
 
-const MergeList = styled.li`
+const InputList = styled.li`
 padding: 15px;
 display: flex;
 flex-direction: column;
 align-items: center;
-.merge-text{
+.register-text{
    font-family: 'Quicksand', sans-serif;
    font-weight: 600;
    font-size: 22px;
@@ -112,28 +128,23 @@ align-items: center;
    margin-bottom: 20px;
    color: #05AFFC;
 }
-.ui-dropdown{
-    width:300px;
-    height:50px;
-    margin-bottom:6px;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    border-radius: 10px;
-    border-color: #05AFFC;
-    color: #05AFFC;
-    background-color: #FFFFFF;
-}
+
+`
+const EditList = styled.div`
+display: flex;
+flex-direction: row;
+
 `
 
-const Merge = styled.li` 
-        width: 230px;
+const Edit = styled.button` 
+        width: 135px;
         height: 45px;
         background-color: #05AFFC;
         border: 10px solid #05AFFC;
         border-radius: 25px; 
         margin-top: 19px; 
         margin-bottom: 6px;  
+        margin-right: 5px;
         font-family: 'Quicksand', sans-serif;
         font-style: normal;
         font-weight: 700;
@@ -141,6 +152,8 @@ const Merge = styled.li`
         color: #FFFFFF;
         display: flex;
         justify-content: center;
-        align-items: center; 
+        align-items: center;
+             
         `
-        
+     
+    

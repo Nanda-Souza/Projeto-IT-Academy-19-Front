@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
-export default function ScreenAcounts(){
+export default function ScreenWithdrawal(){
     
     return (
-        <AcountsContainer>
+        <WithdrawalContainer>
              
          <div className="container">
                 
@@ -11,29 +11,25 @@ export default function ScreenAcounts(){
              
                 <InputList>
 
-                 <p className="register-text">Cadastre sua conta</p>
-
-                 <input                
-                  type="bank"
-                  placeholder="Banco"
-                  required             
-                 />
-
-                 <input                
-                  type="agency" 
-                  placeholder="Agência" 
-                  required
-                 />
+                 <p className="save-text">Retirar Dinheiro</p>
 
                  <input                
                   type="account" 
-                  placeholder="Nº da conta" 
+                  placeholder="Nº da conta destisno" 
                   required
                  />
 
-                 <Register>
-                  <p id="button" className="button-log">Cadastrar Conta</p>
-                 </Register>
+                 <input                
+                  type="value" 
+                  placeholder="Valor" 
+                  required
+                 />
+
+                 
+
+                 <Withdrawal>
+                  <p id="button" className="button-save">Retirar</p>
+                 </Withdrawal>
 
 
                 </InputList>
@@ -42,12 +38,12 @@ export default function ScreenAcounts(){
 
          </div>
 
-        </AcountsContainer>
+        </WithdrawalContainer>
     )
 }
 
 
-const AcountsContainer = styled.div`
+const WithdrawalContainer = styled.div`
     display: flex;
     justify-content: center;
     aligh-itens: center;
@@ -71,6 +67,11 @@ const AcountsContainer = styled.div`
         font-style: normal;
         font-weight: 400;
       }
+      @media (max-width: 700px) {
+        .container {
+          height:70vh;
+          margin-top: 20%;
+        }
 `
 
 const InputContainer = styled.ul`
@@ -103,7 +104,7 @@ padding: 15px;
 display: flex;
 flex-direction: column;
 align-items: center;
-.register-text{
+.save-text{
    font-family: 'Quicksand', sans-serif;
    font-weight: 600;
    font-size: 22px;
@@ -114,7 +115,7 @@ align-items: center;
 
 `
 
-const Register = styled.button` 
+const Withdrawal = styled.button` 
         width: 230px;
         height: 45px;
         background-color: #05AFFC;

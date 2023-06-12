@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
-export default function HeaderAcounts(props){
-    const { headerText } = props
+export default function HeaderAccounts(props){
+    const { headerText, exitIcon, exitNavigate } = props
     return (
         <HeaderGeneral>
             <p className= "textHeader">{headerText}</p>
-            <button onClick><img src="assets/exit.png" alt=""/></button>
+            <button onClick={exitNavigate}><img src={exitIcon} alt=""/></button>
         </HeaderGeneral>
     )
 }

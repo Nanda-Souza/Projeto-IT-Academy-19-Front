@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
-import ScreenRemove from '../components/acounts/ScreenRemove'
+import ScreenRemove from '../components/accounts/ScreenRemove'
 import Footer from '../components/shared/Footer'
 import Header from '../components/shared/Header'
 
@@ -12,24 +12,32 @@ function RemovePage() {
     const leftIcon = 'assets/add.png'
     const midIcon = 'assets/remove.png'
     const rightIcon = 'assets/merge.png'
+    const exitIcon = 'assets/exit.png'
     const navigate = useNavigate()
 
-    function removeAcount(){        
+    function removeAccount(){        
         navigate('/remove')
     }
 
-    function addAcount(){        
-        navigate('/acounts')
+    function addAccount(){        
+        navigate('/account')
     }    
 
-    function mergeAcount(){        
+    function mergeAccount(){        
         navigate('/merge')
+    }
+
+    function accountExit(){        
+        navigate('/')
     }
 
     return (
       
         <ScreenContainer>
-            <Header headerText={headerText} />
+            <Header headerText={headerText}
+            exitIcon={exitIcon}
+            exitNavigate={accountExit} 
+            />
             <ScreenRemove />
             <Footer 
             leftButton={leftButton}
@@ -38,9 +46,9 @@ function RemovePage() {
             leftIcon={leftIcon}
             midIcon={midIcon}
             rightIcon={rightIcon}
-            leftNavigate={addAcount}
-            midNavigate={removeAcount}
-            rightNavigate={mergeAcount}            
+            leftNavigate={addAccount}
+            midNavigate={removeAccount}
+            rightNavigate={mergeAccount}            
             />
         </ScreenContainer>
       

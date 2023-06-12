@@ -1,49 +1,52 @@
 import styled from "styled-components"
 
-export default function ScreenSummary(){
+export default function ScreenExtract(){
    
     return (
-        <SummaryContainer>
+        <ExtractContainer>
              
             <div className="container">
 
-             <div className="list-bank">
+             <div className="list-data">
                 <ul>
-                    <li><span className="blue">BANCO</span></li>
-                    <li><span className="bank">Nubank</span></li>
-                    <li><span className="bank">Bradesco</span></li>
-                    <li><span className="bank">Itáu</span></li>
-                    <li><span className="bank">Caixa</span></li>
+                    <li><span className="blue">DATA</span></li>
+                    <li><span className="gray">30/11/2023</span></li>
+                    <li><span className="gray">20/12/2023</span></li>
                 </ul>
 
                  <div className="vertical-line"></div>
 
                 <ul className="agence">
-                    <li><span className="blue">AGÊNCIA</span></li>
-                    <li><span className="agence">1234</span></li>
-                    <li><span className="agence">0144</span></li>
-                    <li><span className="agence">2569</span></li>
-                    <li><span className="agence">3785</span></li>
+                    <li><span className="blue">TIPO</span></li>
+                    <li><span className="gain">Receita</span></li>
+                    <li><span className="expense">Despesa</span></li>
                 </ul>
 
                  <div className="vertical-line"></div>
 
+                 <ul className="agence">
+                    <li><span className="blue">CATEGORIA</span></li>
+                    <li><span className="gray">Salário </span></li>
+                    <li><span className="gray">Alimentação</span></li>
+                </ul>
+
+                 <div className="vertical-line"></div>
+
+
                 <ul className="numeber-Account">
-                    <li><span className="blue">Nº DA CONTA</span></li>
-                    <li><span className="number">1500686-2</span></li>
-                    <li><span className="number">1063530-0</span></li>
-                    <li><span className="number">1267540-7</span></li>
-                    <li><span className="number">4455289-0</span></li>
+                    <li><span className="blue">DESCRIÇÃO</span></li>
+                    <li><span className="gray">Salário 02/2023</span></li>
+                    <li><span className="gray">Alimentação</span></li>
                 </ul>
 
                  <div className="vertical-line"></div>
 
                 <ul className="value">
                     <li><span className="blue">SALDO</span></li>
-                    <li><span className="expense">-542,54</span></li>
-                    <li><span className="expense">-67,60</span></li>
-                    <li><span className="gain">500,00</span></li>
                     <li><span className="gain">3000,00</span></li>
+                    <li><span className="expense">-67,60</span></li>
+                    
+                    
                 </ul>
 
              </div>
@@ -56,11 +59,11 @@ export default function ScreenSummary(){
 
             </div>
 
-        </SummaryContainer>
+        </ExtractContainer>
     )
 }
 
-const SummaryContainer = styled.div`
+const ExtractContainer = styled.div`
     display: flex;
     justify-content: center;
     aligh-itens: center;
@@ -90,15 +93,7 @@ const SummaryContainer = styled.div`
         color:#0595F2;
         font-weight: 700;
     }
-    .bank{
-        color:#787373;
-        font-weight: 500;
-    }
-    .agence{
-        color:#787373;
-        font-weight: 500;
-    }
-    .number{
+    .gray{
         color:#787373;
         font-weight: 500;
     }
@@ -108,7 +103,7 @@ const SummaryContainer = styled.div`
     .gain{
         color:#03AC00; 
     }       
-    .list-bank{
+    .list-data{
         width: 100%;
         min-height: 55vh;
         display: flex;
@@ -119,7 +114,7 @@ const SummaryContainer = styled.div`
         justify-content: space-between;
         text-align: center;
     }
-    .agence{
+    .gray{
         text-align: center;
     }
     .total-balance{
@@ -149,6 +144,7 @@ const SummaryContainer = styled.div`
         .container {
           height:70vh;
           margin-top: 20%;
+          font-size:12px;
         }
      `
      
