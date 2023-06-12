@@ -4,7 +4,7 @@ import ScreenRemove from '../components/accounts/ScreenRemove'
 import Footer from '../components/shared/Footer'
 import Header from '../components/shared/Header'
 
-function RemovePage() {
+function RemovePage() {    
     const headerText = 'Gerenciar Contas'
     const leftButton = 'Cadastrar conta'
     const midButton = 'Remover Conta'
@@ -13,8 +13,8 @@ function RemovePage() {
     const midIcon = 'assets/remove.png'
     const rightIcon = 'assets/merge.png'
     const exitIcon = 'assets/exit.png'
-    const navigate = useNavigate()
-
+    const navigate = useNavigate()    
+    
     function removeAccount(){        
         navigate('/remove')
     }

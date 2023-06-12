@@ -1,6 +1,27 @@
 import styled from "styled-components"
+import { useState, useEffect } from 'react';
+import useAccountsInfo from "../../hooks/api/getAccounts";
+import { delBankAccountById } from "../../services/accountsApi";
 
 export default function ScreenAccounts(){
+    const { accounts, getAccounts } = useAccountsInfo();
+    const [accountsData, setAccountsData] = useState([]);    
+
+    useEffect(() => {
+        if (accounts) {
+            setAccountsData(accounts);
+        }        
+      }, [accounts]);
+
+      async function deleteAccount(id){
+        const confirmation = window.confirm("Todos os dados da conta serão excluídos, deseja prosseguir? ");
+        
+        if (confirmation){
+            await delBankAccountById(id);
+            const AccountList = await getAccounts();
+            setAccountsData(AccountList);
+        }        
+    }
   
     return (
         <RemoveContainer>
@@ -11,26 +32,13 @@ export default function ScreenAccounts(){
              <RemoveList>
 
              <p className="remove-text">Remover Conta</p>
-      
-             <div className="bank-remove">
-                <p className="balance">Nubank</p>
-                <p className="total"><span><img src="assets/trash.png" alt=""/></span></p>
-             </div>
 
-             <div className="remove-bank">
-                <p className="balance">Bradesco</p>
-                <p className="total"><span><img src="assets/trash.png" alt=""/></span></p>
-             </div>
-
-             <div className="bank-remove">
-                <p className="balance">Itáu</p>
-                <p className="total"><span><img src="assets/trash.png" alt=""/></span></p>
-             </div>
-
-             <div className="remove-bank">
-                <p className="balance">Caixa</p>
-                <p className="total"><span><img src="assets/trash.png" alt=""/></span></p>
-             </div>
+             {accountsData.map((account, index) => (
+			    <div key={index} className={index % 2 === 0 ? 'bank-remove' : 'remove-bank'}>
+                    <p className="balance">{account.bank}</p>
+                    <p className="total"><span><img src="assets/trash.png" onClick={() => deleteAccount(account.id)} alt=""/></span></p>
+                </div>
+            ))}
 
              </RemoveList>
 
