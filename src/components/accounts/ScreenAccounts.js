@@ -1,43 +1,71 @@
+import { useState } from "react";
 import styled from "styled-components"
+import { createBankAccount } from "../../services/accountsApi";
 
 export default function ScreenAccounts(){
+    const [bank, setBank] = useState('');
+    const [agency, setAgency] = useState('');
+    const [accountNum, setAccountNum] = useState('');
     
+    async function submit(event) {
+        event.preventDefault();        
+        if (agency.length !== 4) {
+            alert("O Numero da agência deve ter exatos 4 digítos!")
+        } else if (accountNum.length < 6 || accountNum.length > 11) {
+            alert("O Numero da conta deve ter entre 6 a 11 digítos!")
+        } else {
+          try {
+            await createBankAccount(bank, agency, accountNum);
+            alert('Conta bancária criada com sucesso!');
+          } catch (err) {
+            alert('Não foi criar a conta bancária!');
+          }
+        } 
+    }
     return (
         <AccountsContainer>
              
          <div className="container">
                 
             <InputContainer>
-             
+                <form onSubmit={submit}>             
                 <InputList>
-
+                
                  <p className="register-text">Cadastre sua conta</p>
 
                  <input                
-                  type="bank"
+                  type="text"
                   placeholder="Banco"
-                  required             
+                  required
+                  value={bank} 
+                  onChange={e => setBank(e.target.value)}             
                  />
 
                  <input                
-                  type="agency" 
+                  type="number"
+                  min={0}                  
                   placeholder="Agência" 
                   required
+                  value={agency} 
+                  onChange={e => setAgency(e.target.value)}             
                  />
 
                  <input                
-                  type="account" 
+                  type="number"
+                  min={0} 
                   placeholder="Nº da conta" 
                   required
+                  value={accountNum} 
+                  onChange={e => setAccountNum(e.target.value)}
                  />
 
-                 <Register>
+                 <Register type="submit">
                   <p id="button" className="button-log">Cadastrar Conta</p>
                  </Register>
-
+                 
 
                 </InputList>
-
+                </form>
             </InputContainer>
 
          </div>
@@ -108,6 +136,15 @@ padding: 15px;
 display: flex;
 flex-direction: column;
 align-items: center;
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
 .register-text{
    font-family: 'Quicksand', sans-serif;
    font-weight: 600;
@@ -116,7 +153,6 @@ align-items: center;
    margin-bottom: 20px;
    color: #05AFFC;
 }
-
 `
 
 const Register = styled.button` 

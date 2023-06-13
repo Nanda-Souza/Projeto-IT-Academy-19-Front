@@ -1,6 +1,26 @@
 import styled from "styled-components"
+import { useState, useEffect } from 'react';
+import useAccountsInfo from "../../hooks/api/getAccounts";
 
 export default function ScreenSummary(){
+    const { accounts } = useAccountsInfo();
+    const [accountsData, setAccountsData] = useState([]);    
+
+    useEffect(() => {
+        if (accounts) {
+            setAccountsData(accounts);
+        }        
+      }, [accounts]);
+
+      /*
+      {accountsData.map((account, index) => (
+            <li><span key={index} className="bank">{account.bank}</span></li>
+			    <div  className={index % 2 === 0 ? 'bank-remove' : 'remove-bank'}>                
+                    <p className="balance">{account.bank}</p>
+                    <p className="total"><span><img src="assets/trash.png" onClick={() => deleteAccount(account.id)} alt=""/></span></p>
+                </div>
+            ))}
+      */
    
     return (
         <SummaryContainer>
@@ -10,40 +30,36 @@ export default function ScreenSummary(){
              <div className="list-bank">
                 <ul>
                     <li><span className="blue">BANCO</span></li>
-                    <li><span className="bank">Nubank</span></li>
-                    <li><span className="bank">Bradesco</span></li>
-                    <li><span className="bank">Itáu</span></li>
-                    <li><span className="bank">Caixa</span></li>
+                    {accountsData.map((account, index) => (
+                        <li><span key={index} className="bank">{account.bank}</span></li>
+                    ))}
                 </ul>
 
                  <div className="vertical-line"></div>
 
                 <ul className="agence">
                     <li><span className="blue">AGÊNCIA</span></li>
-                    <li><span className="agence">1234</span></li>
-                    <li><span className="agence">0144</span></li>
-                    <li><span className="agence">2569</span></li>
-                    <li><span className="agence">3785</span></li>
+                    {accountsData.map((account, index) => (
+                        <li><span key={index} className="agence">{account.agency}</span></li>
+                    ))}
                 </ul>
 
                  <div className="vertical-line"></div>
 
                 <ul className="numeber-Account">
                     <li><span className="blue">Nº DA CONTA</span></li>
-                    <li><span className="number">1500686-2</span></li>
-                    <li><span className="number">1063530-0</span></li>
-                    <li><span className="number">1267540-7</span></li>
-                    <li><span className="number">4455289-0</span></li>
+                    {accountsData.map((account, index) => (
+                        <li><span key={index} className="number">{account.accountNum}</span></li>
+                    ))}                    
                 </ul>
 
                  <div className="vertical-line"></div>
 
                 <ul className="value">
                     <li><span className="blue">SALDO</span></li>
-                    <li><span className="expense">-542,54</span></li>
-                    <li><span className="expense">-67,60</span></li>
-                    <li><span className="gain">500,00</span></li>
-                    <li><span className="gain">3000,00</span></li>
+                    {accountsData.map((account, index) => (
+                        <li><span key={index} className={account.balance >= 0 ? 'gain' : 'expense'}>{account.balance}</span></li>
+                    ))}                    
                 </ul>
 
              </div>

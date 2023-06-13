@@ -35,7 +35,7 @@ export default function ScreenAccounts(){
 
              {accountsData.map((account, index) => (
 			    <div key={index} className={index % 2 === 0 ? 'bank-remove' : 'remove-bank'}>
-                    <p className="balance">{account.bank}</p>
+                    <p className="balance">{account.bank} - {account.agency} - {account.accountNum}</p>
                     <p className="total"><span><img src="assets/trash.png" onClick={() => deleteAccount(account.id)} alt=""/></span></p>
                 </div>
             ))}
