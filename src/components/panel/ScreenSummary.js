@@ -1,26 +1,20 @@
 import styled from "styled-components"
 import { useState, useEffect } from 'react';
 import useAccountsInfo from "../../hooks/api/getAccounts";
+import useTotalBalanceInfo from "../../hooks/api/getTotalBalance";
 
 export default function ScreenSummary(){
     const { accounts } = useAccountsInfo();
-    const [accountsData, setAccountsData] = useState([]);    
+    const [accountsData, setAccountsData] = useState([]);
+    const { totalBalance } = useTotalBalanceInfo();
+    const [balanceData, setBalanceData] = useState(undefined);
 
     useEffect(() => {
-        if (accounts) {
+        if (accounts && totalBalance) {
             setAccountsData(accounts);
+            setBalanceData(totalBalance)
         }        
-      }, [accounts]);
-
-      /*
-      {accountsData.map((account, index) => (
-            <li><span key={index} className="bank">{account.bank}</span></li>
-			    <div  className={index % 2 === 0 ? 'bank-remove' : 'remove-bank'}>                
-                    <p className="balance">{account.bank}</p>
-                    <p className="total"><span><img src="assets/trash.png" onClick={() => deleteAccount(account.id)} alt=""/></span></p>
-                </div>
-            ))}
-      */
+      }, [accounts, totalBalance]);
    
     return (
         <SummaryContainer>
@@ -67,7 +61,7 @@ export default function ScreenSummary(){
           
              <div className="total-balance">
                 <p className="balance">SALDO TOTAL</p>
-                <p className="total"><span>2849,96</span></p>
+                <p className="total"><span>{balanceData}</span></p>
              </div>
 
             </div>
