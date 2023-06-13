@@ -38,3 +38,14 @@ export async function createBankAccount(bank, agency, accountNum) {
   
   return response.data;
 }
+
+export async function mergeBankAccounts(accountId, mergedId) {
+  console.log("merge api");
+  const response = await api.post(`/accounts/merge`, {
+    accountId,
+    mergedId    
+  });
+  
+  return response.data;
+}
+

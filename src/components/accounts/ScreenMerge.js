@@ -1,7 +1,51 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import { useState, useEffect } from 'react';
+import useAccountsInfo from "../../hooks/api/getAccounts";
+import { mergeBankAccounts } from "../../services/accountsApi";
 
 export default function ScreenMerge(){
-    
+    const { accounts, getAccounts } = useAccountsInfo();
+    const [accountsData, setAccountsData] = useState([]);
+    const [accountId, setAccountId] = useState('');
+    const [mergedId, setMergedId] = useState('');        
+
+    useEffect(() => {
+        if (accounts) {
+            setAccountsData(accounts);
+        }        
+      }, [accounts]);
+
+    const selectedAccountId = (event) => {
+        setAccountId(event.target.value);        
+    };
+
+    const selectedMergeId = (event) => {
+        setMergedId(event.target.value);      
+    };
+
+    async function mergeAccounts(){
+        if (accountId == 0 || mergedId == 0) {
+            alert("Favor selecionar duas contas a serem mescladas!")
+        } else if (accountId === mergedId) {
+            alert("As contas selecionas devem ser diferentes!")
+        } else {
+            try {
+                const confirmation = window.confirm("Todos os dados da conta primeira conta e suas transaçõe serão mesclados na segunda conta, deseja prosseguir?");
+                
+                if (confirmation){
+                    console.log(confirmation);
+                    await mergeBankAccounts(parseInt(accountId), parseInt(mergedId));
+                    const AccountList = await getAccounts();
+                    setAccountsData(AccountList);
+                }
+            } catch (err) {
+                alert('Não foi mesclar as conta bancária!');
+        }
+          
+           
+        }         
+    }
+          
     return (
         <Join>
              
@@ -14,24 +58,22 @@ export default function ScreenMerge(){
                  <p className="merge-text">Mesclar Contas</p>
 
                  
-                  <select class="ui-dropdown">
-                   <option value="">Selecione uma conta</option> 
-                   <option value="4">Nubank 1234 1500686-2</option>
-                   <option value="3">Bradesco 0144 1063530-0</option>
-                   <option value="2">Itáu 2569 1267540-7</option>
-                   <option value="1">Caixa 3785 4455289-0</option>
+                  <select value={mergedId} onChange={selectedMergeId} class="ui-dropdown">
+                   <option value="0">Selecione uma conta</option>
+                   {accountsData.map((account, index) => ( 
+                    <option key={index} value={account.id}>{account.bank} {account.agency} {account.accountNum}</option>
+                   ))}                   
                   </select>
                 
-                  <select class="ui-dropdown">
-                   <option value="">Selecione outra conta</option> 
-                   <option value="4">Nubank 1234 1500686-2</option>
-                   <option value="3">Bradesco 0144 1063530-0</option>
-                   <option value="2">Itáu 2569 1267540-7</option>
-                   <option value="1">Caixa 3785 4455289-0</option>
+                  <select value={accountId} onChange={selectedAccountId} class="ui-dropdown">
+                   <option value="0">Selecione outra conta</option> 
+                   {accountsData.map((account, index) => ( 
+                    <option key={index} value={account.id}>{account.bank} {account.agency} {account.accountNum}</option>
+                   ))}
                   </select>
                       
 
-                 <Merge>
+                 <Merge onClick={mergeAccounts}>
                   <p id="button" className="button-log">Mesclar Contas</p>
                  </Merge>
 
