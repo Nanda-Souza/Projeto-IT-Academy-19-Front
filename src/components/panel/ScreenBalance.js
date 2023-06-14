@@ -1,6 +1,16 @@
 import styled from "styled-components"
+import { useState, useEffect } from 'react';
+import useHalfYearBalanceInfo from "../../hooks/api/getHalfYearbalance";
 
 export default function ScreenBalance(){
+    const { halfYearBalance } = useHalfYearBalanceInfo();
+    const [halfYearData, setHalfYearData] = useState([{}]);
+
+    useEffect(() => {
+        if (halfYearBalance) {            
+            setHalfYearData(halfYearBalance)
+        }        
+      }, [halfYearBalance]);
    
     return (
         <BalanceContainer>
@@ -13,12 +23,9 @@ export default function ScreenBalance(){
              <div className="list-balance">
                 <ul>
                     <li><span className="blue">DATA</span></li>
-                    <li><span className="blue-b">Abril</span></li>
-                    <li><span className="blue-b">Maio</span></li>
-                    <li><span className="blue-b">Junho</span></li>
-                    <li><span className="blue-b">Julho</span></li>
-                    <li><span className="blue-b">Agosto</span></li>
-                    <li><span className="blue-b">Setembro</span></li>
+                    {halfYearData.map((halfyear, index) => (
+                        <li><span key={index} className="blue-b">{halfyear.month}</span></li>
+                    ))}                    
                 </ul>
 
 
@@ -26,12 +33,9 @@ export default function ScreenBalance(){
 
                 <ul className="value">
                     <li><span className="blue">SALDO TOTAL</span></li>
-                    <li><span className="gray">3542.54</span></li>
-                    <li><span className="gray">4545.27</span></li>
-                    <li><span className="gray">1574.14</span></li>
-                    <li><span className="gray">2582.00</span></li>
-                    <li><span className="gray">3222.51</span></li>
-                    <li><span className="gray">5614.11</span></li>
+                    {halfYearData.map((halfyear, index) => (
+                        <li><span key={index} className="gray">{halfyear.balance}</span></li>
+                    ))}
                 </ul>
 
              </div>

@@ -32,8 +32,7 @@ export default function ScreenMerge(){
             try {
                 const confirmation = window.confirm("Todos os dados da conta primeira conta e suas transaçõe serão mesclados na segunda conta, deseja prosseguir?");
                 
-                if (confirmation){
-                    console.log(confirmation);
+                if (confirmation){                    
                     await mergeBankAccounts(parseInt(accountId), parseInt(mergedId));
                     const AccountList = await getAccounts();
                     setAccountsData(AccountList);

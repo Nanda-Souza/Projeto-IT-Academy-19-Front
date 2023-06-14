@@ -1,4 +1,5 @@
 import {BrowserRouter, Routes, Route } from "react-router-dom";
+import { BankProvider } from "./contexts/bankContext";
 import LandingPage from "./pages/LandingPage";
 import SummaryPage from "./pages/SummaryPage";
 import AccountsPage from "./pages/AccountsPage";
@@ -26,6 +27,7 @@ unloadScrollBars();
   
   return (
     <BrowserRouter>
+    <BankProvider>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/summary" element={<SummaryPage />} />
@@ -43,6 +45,7 @@ unloadScrollBars();
         <Route path="/savings" element={<SavingsPage />} />
         <Route path="/choice" element={<ChoicePage />} />
       </Routes>    
+      </BankProvider>
     </BrowserRouter>
   );
 }

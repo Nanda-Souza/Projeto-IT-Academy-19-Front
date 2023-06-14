@@ -1,6 +1,24 @@
 import styled from "styled-components"
+import { useState, useEffect, useContext } from 'react';
+import { BankIdContext } from "../../contexts/bankContext";
+
 
 export default function ScreenExtract(){
+    const { bankAccountId } = useContext(BankIdContext);
+    const [accountsData, setAccountsData] = useState([]);
+    const [totalBalance, setTotalBalance] = useState(0);    
+
+    useEffect(() => {
+        if (bankAccountId) {
+          setAccountsData(bankAccountId);
+          calculateTotalBalance(bankAccountId);          
+        }
+      }, [bankAccountId]);
+    
+      const calculateTotalBalance = (accounts) => {
+        const total = accounts.reduce((sum, account) => sum + parseFloat(account.value), 0);
+        setTotalBalance(total);      
+      };      
    
     return (
         <ExtractContainer>
@@ -10,24 +28,27 @@ export default function ScreenExtract(){
              <div className="list-data">
                 <ul>
                     <li><span className="blue">DATA</span></li>
-                    <li><span className="gray">30/11/2023</span></li>
-                    <li><span className="gray">20/12/2023</span></li>
+                    {accountsData.map((account, index) => ( 
+                        <li><span key={index} className="gray">{account.date}</span></li>                    
+                   ))}                                        
                 </ul>
 
                  <div className="vertical-line"></div>
 
                 <ul className="agence">
                     <li><span className="blue">TIPO</span></li>
-                    <li><span className="gain">Receita</span></li>
-                    <li><span className="expense">Despesa</span></li>
+                    {accountsData.map((account, index) => (
+                        <li><span key={index} className={account.type ===  "Receita" ? 'gain' : 'expense'}>{account.type}</span></li>			    
+                    ))}     
                 </ul>
 
                  <div className="vertical-line"></div>
 
                  <ul className="agence">
                     <li><span className="blue">CATEGORIA</span></li>
-                    <li><span className="gray">Salário </span></li>
-                    <li><span className="gray">Alimentação</span></li>
+                    {accountsData.map((account, index) => (
+                        <li><span key={index} className="gray">{account.category}</span></li>                    
+                    ))}
                 </ul>
 
                  <div className="vertical-line"></div>
@@ -35,16 +56,26 @@ export default function ScreenExtract(){
 
                 <ul className="numeber-Account">
                     <li><span className="blue">DESCRIÇÃO</span></li>
-                    <li><span className="gray">Salário 02/2023</span></li>
-                    <li><span className="gray">Alimentação</span></li>
+                    {accountsData.map((account, index) => (
+                        <li><span key={index} className="gray">{account.description}</span></li>                    
+                    ))}
                 </ul>
 
                  <div className="vertical-line"></div>
 
                 <ul className="value">
+                    <li><span className="blue">VALOR</span></li>
+                    {accountsData.map((account, index) => (
+                        <li><span key={index} className="gray">{account.value}</span></li>                    
+                    ))}                    
+                    
+                </ul>
+                <div className="vertical-line"></div>
+
+                <ul className="value">
                     <li><span className="blue">SALDO</span></li>
                     <li><span className="gain">3000,00</span></li>
-                    <li><span className="expense">-67,60</span></li>
+                    <li><span className="gain">2932,40</span></li>
                     
                     
                 </ul>
@@ -54,7 +85,7 @@ export default function ScreenExtract(){
           
              <div className="total-balance">
                 <p className="balance">SALDO TOTAL</p>
-                <p className="total"><span>2849,96</span></p>
+                <p className="total"><span>{totalBalance.toFixed(2)}</span></p>
              </div>
 
             </div>

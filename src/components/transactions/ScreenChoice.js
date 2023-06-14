@@ -1,11 +1,36 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from 'react';
+import useAccountsInfo from "../../hooks/api/getAccounts";
+import { BankIdContext } from "../../contexts/bankContext";
+import { getAccountByID } from "../../services/transactionsApi"
 
 export default function ScreenChoice(){
+    const { updateBankAccount } = useContext(BankIdContext);
     const navigate = useNavigate();
+    const { accounts } = useAccountsInfo();
+    const [accountsData, setAccountsData] = useState([]);
+    const [bankAccount, setBankAccount] = useState(0);
 
-    function extractPage(){
-        navigate("/extract");
+    useEffect(() => {
+        if (accounts) {
+            setAccountsData(accounts);
+        }        
+      }, [accounts]);
+    
+    const selectedBank = (event) => {
+        setBankAccount(event.target.value);      
+    };
+
+    async function extractPage(){
+        if( bankAccount === 0){
+            alert("Favor selecionar uma conta!");
+        } else {
+            const result = await getAccountByID(parseInt(bankAccount));
+            updateBankAccount(result);                    
+            navigate("/extract");        
+        }
+        
     }
     
     return (
@@ -20,12 +45,11 @@ export default function ScreenChoice(){
                  <p className="move-text">Escolha uma conta para gerenciar as transações</p>
 
                  
-                  <select class="ui-dropdown">
-                   <option value="">Selecione uma conta</option> 
-                   <option value="4">Nubank 1234 1500686-2</option>
-                   <option value="3">Bradesco 0144 1063530-0</option>
-                   <option value="2">Itáu 2569 1267540-7</option>
-                   <option value="1">Caixa 3785 4455289-0</option>
+                  <select value={bankAccount} onChange={selectedBank} class="ui-dropdown">
+                   <option value="0">Selecione uma conta</option> 
+                   {accountsData.map((account, index) => ( 
+                    <option key={index} value={account.id}>{account.bank} {account.agency} {account.accountNum}</option>
+                   ))}                   
                   </select>
                 
                       
