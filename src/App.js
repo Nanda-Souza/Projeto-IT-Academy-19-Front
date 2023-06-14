@@ -13,6 +13,7 @@ import MovePage from "./pages/MovePage";
 import SaveMoneyPage from "./pages/SaveMoneyPage"
 import WithdrawalPage from "./pages/WithdrawalPage";
 import SavingsPage from "./pages/SavingsPage";
+import ChoicePage from "./pages/ChoicePage";
 
 
 export default function App() { 
@@ -40,6 +41,7 @@ unloadScrollBars();
         <Route path="/save" element={<SaveMoneyPage />} />
         <Route path="/withdrawal" element={<WithdrawalPage />} />
         <Route path="/savings" element={<SavingsPage />} />
+        <Route path="/choice" element={<ChoicePage />} />
       </Routes>    
     </BrowserRouter>
   );

@@ -14,8 +14,8 @@ export default function LandingContainer(){
     navigate("/account");
 }
 
-function transationsPage(){
-  navigate("/extract");
+function choicePage(){
+  navigate("/choice");
 }
 
 function savePage(){
@@ -38,7 +38,7 @@ function savePage(){
             Gerenciar Contas
          </button>
 
-         <button className="transactions" onClick={transationsPage}>
+         <button className="transactions" onClick={choicePage}>
             Gerenciar Transações
          </button>
 

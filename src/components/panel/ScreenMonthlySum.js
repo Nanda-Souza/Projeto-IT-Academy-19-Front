@@ -1,6 +1,18 @@
 import styled from "styled-components"
+import { useState, useEffect } from 'react';
+import useMonthlyBalanceInfo from "../../hooks/api/getMonthlybalance";
 
 export default function ScreenMonthlySum(){
+    const { monthlyBalance } = useMonthlyBalanceInfo();
+    const [income, setIncome] = useState(undefined);
+    const [expense, setExpense] = useState(undefined);
+
+    useEffect(() => {
+        if (monthlyBalance) {            
+            setIncome(monthlyBalance.income);
+            setExpense(monthlyBalance.expense);
+        }        
+      }, [monthlyBalance]);
    
     return (
         <MonthlySumContainer>
@@ -13,7 +25,7 @@ export default function ScreenMonthlySum(){
              <div className="list-monthly">
                 <ul>
                     <li><span className="blue">RESUMO RECEITA TOTAL</span></li>
-                    <li><span className="gray">5455.00</span></li>
+                    <li><span className="gray">{income}</span></li>
                 </ul>
 
 
@@ -21,7 +33,7 @@ export default function ScreenMonthlySum(){
 
                 <ul className="value">
                     <li><span className="blue">RESUMO DESPESAS TOTAL</span></li>
-                    <li><span className="gray">3542.54</span></li>
+                    <li><span className="gray">{expense}</span></li>
                 </ul>
 
              </div>
